@@ -14,11 +14,13 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import java.nio.CharBuffer;
 
 @Service
 @RequiredArgsConstructor
+@Validated
 public class AccountSecurityManagerImpl implements AccountSecurityManager {
     private static final String ACCOUNT_PHONE_NOT_FOUND = "Аккаунта с таким телефоном не существует";
     private static final String ACCOUNT_WITH_SUCH_PHONE_ALREADY_EXISTS = "Аккаунт с таким телефоном уже существует";
