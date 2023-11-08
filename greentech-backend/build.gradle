@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'org.greentech'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 
 java {
     sourceCompatibility = '17'
@@ -32,8 +32,13 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'com.auth0:java-jwt:4.4.0'
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootBuildImage {
+    imageName = "olegprog2020/${rootProject.name}:${version}"
 }
