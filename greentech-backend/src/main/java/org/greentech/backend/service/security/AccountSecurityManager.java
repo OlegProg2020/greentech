@@ -20,6 +20,9 @@ public interface AccountSecurityManager {
     Account findByPhone(@Pattern(regexp = "^(?:\\+7|8)[0-9]{10}$",
             message = "Телефон должен начинаться с 8 или +7 и продолжаться 10-ю цифрами") String phone);
 
+    /**
+     * Метод предназначен для создания новых аккаунтов с {@link org.greentech.backend.entity.enums.Role} = CUSTOMER.
+     */
     AccountWithTokenResponseDto register(@Valid AccountSignUpRequestDto signUpDto);
 
     AccountWithTokenResponseDto login(@Valid AccountCredentialsRequestDto credentialsDto);

@@ -7,6 +7,7 @@ import org.greentech.backend.dto.request.AccountCredentialsRequestDto;
 import org.greentech.backend.dto.request.AccountSignUpRequestDto;
 import org.greentech.backend.dto.response.AccountWithTokenResponseDto;
 import org.greentech.backend.entity.Account;
+import org.greentech.backend.entity.enums.Role;
 import org.greentech.backend.exception.DataConflictException;
 import org.greentech.backend.exception.DataMissingException;
 import org.greentech.backend.exception.InvalidPasswordException;
@@ -39,6 +40,7 @@ public class AccountSecurityManagerImpl implements AccountSecurityManager {
     @Transactional
     public AccountWithTokenResponseDto register(AccountSignUpRequestDto signUpDto) {
         Account newAccount = signUpDto.toEntity();
+        newAccount.setRole(Role.CUSTOMER);
         newAccount.setPassword(passwordEncoder.encode(CharBuffer.wrap(signUpDto.getPassword())));
         try {
             AccountWithTokenResponseDto responseDto = AccountWithTokenResponseDto.fromEntity(
