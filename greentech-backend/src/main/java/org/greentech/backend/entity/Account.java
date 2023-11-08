@@ -6,6 +6,7 @@ import org.greentech.backend.entity.enums.Role;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -32,4 +33,17 @@ public class Account implements Serializable {
     private Role role;
 
     private String name;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Account account)) return false;
+
+        return Objects.equals(id, account.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }
