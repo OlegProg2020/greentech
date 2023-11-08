@@ -17,6 +17,19 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+    private static final String[] ALLOWED_URLS = new String[]{
+            "/api/v1/auth/**",
+            "/v2/api-docs",
+            "/v3/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/swagger-ui.html"
+    };
 
     private final UserAuthenticationEntryPoint userAuthenticationEntryPoint;
     private final UserAuthProvider userAuthProvider;
@@ -33,7 +46,8 @@ public class SecurityConfig {
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers(HttpMethod.POST, "/api/login", "/api/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/login", "/register").permitAll()
+                        .requestMatchers(ALLOWED_URLS).permitAll()
                         .anyRequest().authenticated()
                 );
         return httpSecurity.build();

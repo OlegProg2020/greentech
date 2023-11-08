@@ -6,9 +6,9 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.greentech.backend.entity.Account;
 import org.greentech.backend.service.security.AccountSecurityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,8 +28,12 @@ public class UserAuthProvider {
      * Используем сеттер, чтобы инициализировать бин lazy. Таким образом
      * избавляемся от circular references.
      */
-    @Setter
+    @Autowired
     @Lazy
+    public void setAccountSecurityManager(AccountSecurityManager accountSecurityManager) {
+        this.accountSecurityManager = accountSecurityManager;
+    }
+
     private AccountSecurityManager accountSecurityManager;
 
     @Value("${security.jwt.token.secret-key}")
