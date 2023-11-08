@@ -18,7 +18,8 @@ import org.springframework.context.annotation.Configuration;
         bearerFormat = "JWT",
         type = SecuritySchemeType.HTTP,
         in = SecuritySchemeIn.HEADER,
-        description = "JWT auth description"
+        description = "Требуется получить токен, используя /login или /register и посылать его " +
+                "в каждом запросе в заголовках. Пример: заголовок - Authorization, значение - Bearer your-token"
 )
 public class OpenApiSpecificationConfig {
 }
