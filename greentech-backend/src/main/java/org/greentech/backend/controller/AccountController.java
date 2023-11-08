@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.greentech.backend.dto.response.AccountResponseDto;
 import org.greentech.backend.service.AccountService;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,14 +22,16 @@ public class AccountController {
     @GetMapping("/accounts/{accountId}")
     @PreAuthorize("#accountId.equals(authentication.principal.getId()) " +
             "or hasRole('ADMIN')")
-    public AccountResponseDto getAccountById(@PathVariable(name = "accountId") Integer accountId) {
-        return accountService.findById(accountId);
+    public ResponseEntity<AccountResponseDto> getAccountById(@PathVariable(name = "accountId") Integer accountId) {
+        return ResponseEntity
+                .ok(accountService.findById(accountId));
     }
 
     @GetMapping("/accounts/byPhone/{phone}")
     @PreAuthorize("#phone.equals(authentication.principal.getPhone()) " +
             "or hasRole('ADMIN')")
-    public AccountResponseDto getAccountByPhone(@PathVariable(name = "phone") String phone) {
-        return accountService.findByPhone(phone);
+    public ResponseEntity<AccountResponseDto> getAccountByPhone(@PathVariable(name = "phone") String phone) {
+        return ResponseEntity
+                .ok(accountService.findByPhone(phone));
     }
 }
