@@ -1,1 +1,23 @@
-
+server:
+  port: 8080
+spring:
+  application:
+    name: greentech-backend
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    open-in-view: true
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+security:
+  jwt:
+    token:
+      secret-key: ${JWT_SECRET_KEY}
