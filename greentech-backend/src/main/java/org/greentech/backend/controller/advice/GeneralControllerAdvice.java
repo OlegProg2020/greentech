@@ -40,7 +40,7 @@ public class GeneralControllerAdvice {
     })
     public ResponseEntity<ErrorResponseDto> onInvalidPasswordException(InvalidPasswordException exception) {
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
+                .status(HttpStatus.UNAUTHORIZED)
                 .body(new ErrorResponseDto(exception.getMessage()));
     }
 

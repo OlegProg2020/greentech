@@ -1,5 +1,8 @@
 package org.greentech.backend.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.greentech.backend.dto.response.AccountResponseDto;
@@ -19,6 +22,29 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
     private final AccountService accountService;
 
+    @Operation(
+            summary = "Получение аккаунта по id",
+            description = "Позволяет найти существующий аккаунт по id",
+            responses = {
+                    @ApiResponse(responseCode = "200"),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "accountId < 1",
+                            content = @Content
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Пользователь пытается получить доступ к чужому аккаунту, но " +
+                                    "у него нет роли ADMIN",
+                            content = @Content
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Аккаунта с указанным id не существует",
+                            content = @Content
+                    )
+            }
+    )
     @GetMapping("/accounts/{accountId}")
     @PreAuthorize("#accountId.equals(authentication.principal.getId()) " +
             "or hasRole('ADMIN')")
@@ -27,6 +53,29 @@ public class AccountController {
                 .ok(accountService.findById(accountId));
     }
 
+    @Operation(
+            summary = "Получение аккаунта по номеру телефона",
+            description = "Позволяет найти существующий аккаунт по номеру телефона",
+            responses = {
+                    @ApiResponse(responseCode = "200"),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "phone невалиден",
+                            content = @Content
+                    ),
+                    @ApiResponse(
+                            responseCode = "401",
+                            description = "Пользователь пытается получить доступ к чужому аккаунту, но " +
+                                    "у него нет роли ADMIN",
+                            content = @Content
+                    ),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "Аккаунт с указанным телефоном не существует",
+                            content = @Content
+                    )
+            }
+    )
     @GetMapping("/accounts/byPhone/{phone}")
     @PreAuthorize("#phone.equals(authentication.principal.getPhone()) " +
             "or hasRole('ADMIN')")

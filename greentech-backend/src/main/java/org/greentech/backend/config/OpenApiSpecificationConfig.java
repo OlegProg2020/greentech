@@ -19,7 +19,8 @@ import org.springframework.context.annotation.Configuration;
         type = SecuritySchemeType.HTTP,
         in = SecuritySchemeIn.HEADER,
         description = "Требуется получить токен, используя /login или /register и посылать его " +
-                "в каждом запросе в заголовках. Пример: заголовок - Authorization, значение - Bearer your-token"
+                "в каждом запросе в заголовках. Пример: заголовок - Authorization, значение - Bearer your-token. " +
+                "Токен действует 1 час."
 )
 public class OpenApiSpecificationConfig {
 }
