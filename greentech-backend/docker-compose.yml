@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  # Сервис для разворачивания контейнера с базой данных
+  database:
+    image: postgres:latest
+    pull_policy: always
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=greentech-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=0000
+
+  # Сервис для разворачивания контейнера с приложением
+  webapi:
+    image: olegprog2020/greentech-backend:1.0.0
+    pull_policy: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/greentech-db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=0000
+      - ALLOWED_ORIGINS=*
+      - JWT_SECRET_KEY=greentech-secret-key
