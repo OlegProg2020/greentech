@@ -1,4 +1,4 @@
-package org.greentech.backend.entity.exception;
+package org.greentech.backend.exception;
 
 /**
  * Возникает в случае, если запрашиваемые данные не существуют в базе данных

@@ -1,4 +1,4 @@
-package org.greentech.backend.entity.exception;
+package org.greentech.backend.exception;
 
 /**
  * Возникает в случае, если сохраняемые или изменяемые данные нарушают ограничение

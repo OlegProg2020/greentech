@@ -18,6 +18,7 @@ spring:
       hibernate:
         format_sql: true
 security:
+  origins: ${ALLOWED_ORIGINS}
   jwt:
     token:
       secret-key: ${JWT_SECRET_KEY}
