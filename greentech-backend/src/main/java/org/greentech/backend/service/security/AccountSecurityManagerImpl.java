@@ -1,6 +1,7 @@
 package org.greentech.backend.service.security;
 
 import lombok.RequiredArgsConstructor;
+import org.greentech.backend.config.UserAuthProvider;
 import org.greentech.backend.data.repository.AccountRepository;
 import org.greentech.backend.dto.request.AccountCredentialsRequestDto;
 import org.greentech.backend.dto.request.AccountSignUpRequestDto;
@@ -25,6 +26,7 @@ public class AccountSecurityManagerImpl implements AccountSecurityManager {
 
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserAuthProvider userAuthProvider;
 
     @Override
     public Account findByPhone(String phone) {
@@ -37,8 +39,9 @@ public class AccountSecurityManagerImpl implements AccountSecurityManager {
         Account newAccount = signUpDto.toEntity();
         newAccount.setPassword(passwordEncoder.encode(CharBuffer.wrap(signUpDto.getPassword())));
         try {
-            return AccountWithTokenResponseDto.fromEntity(
+            AccountWithTokenResponseDto responseDto = AccountWithTokenResponseDto.fromEntity(
                     accountRepository.saveAndFlush(newAccount));
+            return setTokenAndReturnDto(responseDto);
         } catch (DataIntegrityViolationException e) {
             throw new DataConflictException(ACCOUNT_WITH_SUCH_PHONE_ALREADY_EXISTS);
         }
@@ -49,7 +52,8 @@ public class AccountSecurityManagerImpl implements AccountSecurityManager {
         Account account = findByPhoneInternal(credentialsDto.getPhone());
 
         if (passwordEncoder.matches(CharBuffer.wrap(credentialsDto.getPassword()), account.getPassword())) {
-            return AccountWithTokenResponseDto.fromEntity(account);
+            AccountWithTokenResponseDto responseDto = AccountWithTokenResponseDto.fromEntity(account);
+            return setTokenAndReturnDto(responseDto);
         } else {
             throw new InvalidPasswordException(INVALID_PASSWORD);
         }
@@ -59,5 +63,10 @@ public class AccountSecurityManagerImpl implements AccountSecurityManager {
     private Account findByPhoneInternal(String phone) {
         return accountRepository.findByPhone(phone)
                 .orElseThrow(() -> new DataMissingException(ACCOUNT_PHONE_NOT_FOUND));
+    }
+
+    private AccountWithTokenResponseDto setTokenAndReturnDto(AccountWithTokenResponseDto responseDto) {
+        responseDto.setToken(userAuthProvider.createToken(responseDto.getPhone()));
+        return responseDto;
     }
 }
