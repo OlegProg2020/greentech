@@ -1,5 +1,6 @@
 package org.greentech.backend.dto.request;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ public class AccountCredentialsRequestDto {
     @Pattern(regexp = "^(?:\\+7|8)[0-9]{10}$", message = "Телефон должен начинаться с 8 или +7 и продолжаться 10-ю цифрами")
     private String phone;
 
+    @Schema(type = "string")
     @NotEmpty(message = "Пароль не должен быть пустым")
     private char[] password;
 }
