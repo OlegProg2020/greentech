@@ -4,7 +4,7 @@
 
 #### 1) Установите Docker и Docker compose.
 
-#### 2) Скопируйте себе файл [docker-compose.yml](./greentech-backend/docker-compose.yml) и перейдите в директорию с ним.
+#### 2) Загрузите себе файл [docker-compose.yml](./greentech-backend/docker-compose.yml) и перейдите в директорию с ним.
 
 #### 3) В командной строке введите:
 ```
