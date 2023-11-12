@@ -20,6 +20,7 @@ import org.springframework.validation.annotation.Validated;
 public class ParameterServiceImpl implements ParameterService {
     private static final String PARAMETER_NAME_TAKEN = "Параметр с заданным именем уже существует";
     private static final String PARAMETER_ID_NOT_FOUND = "Параметр с переданным id не существует";
+    private static final String PARAMETER_HAS_RELATED_ENTITIES = "Параметр связан с товарами";
 
     private final ParameterRepository parameterRepository;
 
@@ -54,6 +55,9 @@ public class ParameterServiceImpl implements ParameterService {
     public void deleteById(Integer id) {
         try {
             parameterRepository.deleteById(id);
+            parameterRepository.flush();
+        } catch (DataIntegrityViolationException e) {
+            throw new DataConflictException(PARAMETER_HAS_RELATED_ENTITIES);
         } catch (EmptyResultDataAccessException ignored) {
         }
     }
