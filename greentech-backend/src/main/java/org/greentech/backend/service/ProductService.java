@@ -2,6 +2,7 @@ package org.greentech.backend.service;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import org.greentech.backend.dto.request.ProductRequestDto;
 import org.greentech.backend.dto.response.ProductResponseDto;
 
@@ -13,7 +14,11 @@ public interface ProductService {
 
     ProductResponseDto findById(@Min(value = 1, message = "id должен быть >= 1") Integer id);
 
+    List<ProductResponseDto> findAllByArticle(
+            @NotBlank(message = "Артикул товара не может состоять только из пробелов") String article);
+
     List<ProductResponseDto> search(String approximateName,
+                                    String approximateArticle,
                                     @Min(value = 1, message = "pageSize должен быть >= 1") int pageSize,
                                     @Min(value = 0, message = "pageNumber должен быть >= 0") int pageNumber);
 
