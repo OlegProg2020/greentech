@@ -17,6 +17,9 @@ public interface ProductService {
                                     @Min(value = 1, message = "limit должен быть >= 1") int limit,
                                     @Min(value = 0, message = "offset должен быть >= 0") int offset);
 
+    /**
+     * Обновляет все поля, кроме характеристик товара.
+     */
     ProductResponseDto update(@Min(value = 1, message = "id должен быть >= 1") Integer id,
                               @Valid ProductRequestDto requestDto);
 
