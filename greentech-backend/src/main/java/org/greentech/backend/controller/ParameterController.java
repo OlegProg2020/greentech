@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @SecurityRequirement(name = "Bearer Authentication")
 @RestController
@@ -33,6 +34,12 @@ public class ParameterController {
     public ResponseEntity<ParameterResponseDto> findParameterById(@PathVariable Integer parameterId) {
         return ResponseEntity
                 .ok(parameterService.findById(parameterId));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<ParameterResponseDto>> findAllParameters() {
+        return ResponseEntity
+                .ok(parameterService.findAll());
     }
 
     @PatchMapping("/{parameterId}")
