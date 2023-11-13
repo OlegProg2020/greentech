@@ -24,6 +24,11 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    /**
+     * Артикул товара. Различные вариации товара должны иметь один артикул, чтобы
+     * была возможность отображения в одной карточке товара на фронтенде.
+     */
+    private String article;
     private String name;
     private BigDecimal price;
     private String description;

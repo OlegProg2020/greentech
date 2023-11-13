@@ -16,6 +16,8 @@ import java.math.BigDecimal;
 @Builder(setterPrefix = "with")
 @Data
 public class ProductRequestDto {
+    @NotBlank(message = "Артикул товара не может состоять только из пробелов")
+    private String article;
 
     @NotBlank(message = "Имя товара не может состоять только из пробелов")
     private String name;
@@ -28,6 +30,7 @@ public class ProductRequestDto {
 
     public Product toEntity() {
         return Product.builder()
+                .withArticle(this.article)
                 .withName(this.name)
                 .withPrice(this.price)
                 .withDescription(this.description)

@@ -16,6 +16,7 @@ import java.util.Map;
 @Builder(setterPrefix = "with")
 public class ProductResponseDto {
     private Integer id;
+    private String article;
     private String name;
     private BigDecimal price;
     private String description;
@@ -33,6 +34,7 @@ public class ProductResponseDto {
 
         return ProductResponseDto.builder()
                 .withId(entity.getId())
+                .withArticle(entity.getArticle())
                 .withName(entity.getName())
                 .withPrice(entity.getPrice())
                 .withDescription(entity.getDescription())
