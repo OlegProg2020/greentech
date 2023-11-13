@@ -10,9 +10,12 @@ import org.greentech.backend.exception.DataMissingException;
 import org.greentech.backend.service.ParameterService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +39,13 @@ public class ParameterServiceImpl implements ParameterService {
     public ParameterResponseDto findById(Integer id) {
         return ParameterResponseDto.fromEntity(
                 findByIdInternal(id));
+    }
+
+    @Override
+    public List<ParameterResponseDto> findAll() {
+        return parameterRepository.findAll(Sort.by("name").ascending())
+                .stream().map(ParameterResponseDto::fromEntity)
+                .toList();
     }
 
     @Override
