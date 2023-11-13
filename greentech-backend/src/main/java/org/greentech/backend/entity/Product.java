@@ -20,6 +20,14 @@ import java.util.Objects;
 public class Product implements Serializable {
     @Serial
     private static final long serialVersionUID = -7621795797627189718L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
+    private BigDecimal price;
+    private String description;
+
     @ElementCollection
     @CollectionTable(name = "product_parameter", joinColumns = @JoinColumn(name = "product_id"))
     @MapKeyJoinColumn(name = "parameter_id")
@@ -27,12 +35,6 @@ public class Product implements Serializable {
     @Builder.Default
     @ToString.Exclude
     Map<Parameter, String> characteristics = new HashMap<>();
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String name;
-    private BigDecimal price;
-    private String description;
 
     @Override
     public boolean equals(Object o) {
