@@ -13,9 +13,9 @@ public interface ProductService {
 
     ProductResponseDto findById(@Min(value = 1, message = "id должен быть >= 1") Integer id);
 
-    List<ProductResponseDto> search(String name,
-                                    @Min(value = 1, message = "limit должен быть >= 1") int limit,
-                                    @Min(value = 0, message = "offset должен быть >= 0") int offset);
+    List<ProductResponseDto> search(String approximateName,
+                                    @Min(value = 1, message = "pageSize должен быть >= 1") int pageSize,
+                                    @Min(value = 0, message = "pageNumber должен быть >= 0") int pageNumber);
 
     /**
      * Обновляет все поля, кроме характеристик товара.
