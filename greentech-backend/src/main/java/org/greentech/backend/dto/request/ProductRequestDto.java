@@ -1,6 +1,7 @@
 package org.greentech.backend.dto.request;
 
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class ProductRequestDto {
     private String name;
 
     @DecimalMin(value = "0.0", message = "Цена товара должна быть >= 0")
+    @Digits(fraction = 2, integer = 10, message = "Цена товара может состоять максимум из 10 цифр в целой части и 2 цифр в дробной")
     private BigDecimal price;
 
     @NotNull(message = "Не указано описание товара")

@@ -13,6 +13,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -51,12 +52,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductResponseDto> search(String approximateName,
-                                           String approximateArticle,
+    public List<ProductResponseDto> search(@NonNull String approximateName,
+                                           @NonNull String approximateArticle,
                                            int pageSize, int pageNumber) {
         Pageable pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("id").ascending());
 
-        return productRepository.findByNameLikeIgnoreCaseAndArticleLikeIgnoreCase(
+        return productRepository.findByNameContainsIgnoreCaseAndArticleContainsIgnoreCase(
                         approximateName, approximateArticle, pageRequest)
                 .stream().map(ProductResponseDto::fromEntity)
                 .toList();
