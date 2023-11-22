@@ -1,4 +1,4 @@
-package org.greentech.backend.config;
+package org.greentech.backend.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

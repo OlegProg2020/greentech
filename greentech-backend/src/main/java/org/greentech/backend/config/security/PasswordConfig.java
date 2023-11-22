@@ -1,4 +1,4 @@
-package org.greentech.backend.config;
+package org.greentech.backend.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,4 +1,4 @@
-package org.greentech.backend.config;
+package org.greentech.backend.config.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

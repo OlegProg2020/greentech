@@ -1,4 +1,4 @@
-package org.greentech.backend.config;
+package org.greentech.backend.config.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

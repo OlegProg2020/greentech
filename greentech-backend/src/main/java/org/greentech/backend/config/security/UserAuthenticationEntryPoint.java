@@ -1,4 +1,4 @@
-package org.greentech.backend.config;
+package org.greentech.backend.config.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
