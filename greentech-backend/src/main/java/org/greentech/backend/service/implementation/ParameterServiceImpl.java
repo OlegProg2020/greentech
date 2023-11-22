@@ -75,7 +75,7 @@ public class ParameterServiceImpl implements ParameterService {
 
     private Parameter saveInternal(Parameter parameterToSave) {
         try {
-            return parameterRepository.saveAndFlush(parameterToSave);
+            return parameterRepository.save(parameterToSave);
         } catch (DataIntegrityViolationException e) {
             throw new DataConflictException(PARAMETER_NAME_TAKEN);
         }
