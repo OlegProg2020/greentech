@@ -4,7 +4,7 @@ services:
   # Сервис для разворачивания контейнера с базой данных
   database:
     image: postgres:latest
-    pull_policy: always
+    pull_policy: missing
     volumes:
       - /var/lib/postgresql/data
     environment:
@@ -14,7 +14,7 @@ services:
 
   # Сервис для разворачивания контейнера с приложением
   webapi:
-    image: olegprog2020/greentech-backend:1.0.0
+    image: olegprog2020/greentech-backend:2.0.0
     pull_policy: always
     ports:
       - "8080:8080"
