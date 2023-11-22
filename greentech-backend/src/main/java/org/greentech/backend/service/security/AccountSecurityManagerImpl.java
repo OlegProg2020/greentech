@@ -1,7 +1,7 @@
 package org.greentech.backend.service.security;
 
 import lombok.RequiredArgsConstructor;
-import org.greentech.backend.config.UserAuthProvider;
+import org.greentech.backend.config.security.UserAuthProvider;
 import org.greentech.backend.data.repository.AccountRepository;
 import org.greentech.backend.dto.request.AccountCredentialsRequestDto;
 import org.greentech.backend.dto.request.AccountSignUpRequestDto;
@@ -46,7 +46,7 @@ public class AccountSecurityManagerImpl implements AccountSecurityManager {
         newAccount.setPassword(passwordEncoder.encode(CharBuffer.wrap(signUpDto.getPassword())));
         try {
             AccountWithTokenResponseDto responseDto = AccountWithTokenResponseDto.fromEntity(
-                    accountRepository.saveAndFlush(newAccount));
+                    accountRepository.save(newAccount));
             return setTokenAndReturnDto(responseDto);
         } catch (DataIntegrityViolationException e) {
             throw new DataConflictException(ACCOUNT_WITH_SUCH_PHONE_ALREADY_EXISTS);
