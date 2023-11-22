@@ -1,7 +1,8 @@
 package org.greentech.backend.service;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import org.greentech.backend.dto.request.ProductCharacteristicPutDto;
 
 public interface ProductCharacteristicService {
 
@@ -10,7 +11,7 @@ public interface ProductCharacteristicService {
      */
     void putCharacteristicToProduct(@Min(value = 1, message = "id должен быть >= 1") Integer productId,
                                     @Min(value = 1, message = "id должен быть >= 1") Integer parameterId,
-                                    @NotNull(message = "Значение параметра обязательно") String value);
+                                    @Valid ProductCharacteristicPutDto characteristic);
 
     void removeCharacteristicFromProduct(@Min(value = 1, message = "id должен быть >= 1") Integer productId,
                                          @Min(value = 1, message = "id должен быть >= 1") Integer parameterId);

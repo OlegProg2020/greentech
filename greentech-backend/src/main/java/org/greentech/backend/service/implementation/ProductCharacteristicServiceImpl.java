@@ -3,6 +3,7 @@ package org.greentech.backend.service.implementation;
 import lombok.RequiredArgsConstructor;
 import org.greentech.backend.data.repository.ParameterRepository;
 import org.greentech.backend.data.repository.ProductRepository;
+import org.greentech.backend.dto.request.ProductCharacteristicPutDto;
 import org.greentech.backend.entity.Parameter;
 import org.greentech.backend.entity.Product;
 import org.greentech.backend.exception.DataMissingException;
@@ -23,11 +24,12 @@ public class ProductCharacteristicServiceImpl implements ProductCharacteristicSe
 
     @Override
     @Transactional
-    public void putCharacteristicToProduct(Integer productId, Integer parameterId, String value) {
+    public void putCharacteristicToProduct(Integer productId, Integer parameterId,
+                                           ProductCharacteristicPutDto characteristic) {
         Product product = findProductByIdInternal(productId);
         Parameter parameter = findParameterByIdInternal(parameterId);
 
-        product.getCharacteristics().put(parameter, value);
+        product.getCharacteristics().put(parameter, characteristic.getValue());
 
         productRepository.save(product);
     }
