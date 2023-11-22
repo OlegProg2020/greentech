@@ -3,7 +3,7 @@ package org.greentech.backend.service;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-public interface ProductParameterService {
+public interface ProductCharacteristicService {
 
     /**
      * Добавляет параметр и его значение в продукт или обновляет существующее значение параметра.
