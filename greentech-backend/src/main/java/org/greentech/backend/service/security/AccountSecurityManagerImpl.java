@@ -11,6 +11,7 @@ import org.greentech.backend.entity.enums.Role;
 import org.greentech.backend.exception.DataConflictException;
 import org.greentech.backend.exception.DataMissingException;
 import org.greentech.backend.exception.InvalidPasswordException;
+import org.greentech.backend.util.PhoneFormatter;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,7 @@ public class AccountSecurityManagerImpl implements AccountSecurityManager {
     public AccountWithTokenResponseDto register(AccountSignUpRequestDto signUpDto) {
         Account newAccount = signUpDto.toEntity();
         newAccount.setRole(Role.CUSTOMER);
+        newAccount.setPhone(PhoneFormatter.formatPhone(newAccount.getPhone()));
         newAccount.setPassword(passwordEncoder.encode(CharBuffer.wrap(signUpDto.getPassword())));
         try {
             AccountWithTokenResponseDto responseDto = AccountWithTokenResponseDto.fromEntity(
@@ -65,7 +67,7 @@ public class AccountSecurityManagerImpl implements AccountSecurityManager {
 
 
     private Account findByPhoneInternal(String phone) {
-        return accountRepository.findByPhone(phone)
+        return accountRepository.findByPhone(PhoneFormatter.formatPhone(phone))
                 .orElseThrow(() -> new DataMissingException(ACCOUNT_PHONE_NOT_FOUND));
     }
 

@@ -6,6 +6,7 @@ import org.greentech.backend.dto.response.AccountResponseDto;
 import org.greentech.backend.entity.Account;
 import org.greentech.backend.exception.DataMissingException;
 import org.greentech.backend.service.AccountService;
+import org.greentech.backend.util.PhoneFormatter;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -28,6 +29,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountResponseDto findByPhone(String phone) {
+        phone = PhoneFormatter.formatPhone(phone);
         Account account = accountRepository.findByPhone(phone)
                 .orElseThrow(() -> new DataMissingException(ACCOUNT_PHONE_NOT_FOUND));
         return AccountResponseDto.fromEntity(account);
