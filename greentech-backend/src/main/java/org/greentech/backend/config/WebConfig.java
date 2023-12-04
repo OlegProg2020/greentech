@@ -35,6 +35,7 @@ public class WebConfig {
                 HttpMethod.GET.name(),
                 HttpMethod.POST.name(),
                 HttpMethod.PATCH.name(),
+                HttpMethod.PUT.name(),
                 HttpMethod.DELETE.name()
         ));
         config.setMaxAge(3600L);
