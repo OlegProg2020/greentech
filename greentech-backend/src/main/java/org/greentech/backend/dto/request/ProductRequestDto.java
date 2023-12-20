@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 import org.greentech.backend.entity.Product;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,12 +32,15 @@ public class ProductRequestDto {
     @NotNull(message = "Не указано описание товара")
     private String description;
 
+    private List<ImageRequestDto> images;
+
     public Product toEntity() {
         return Product.builder()
                 .withArticle(this.article)
                 .withName(this.name)
                 .withPrice(this.price)
                 .withDescription(this.description)
+                .withImages(this.images.stream().map(ImageRequestDto::toEntity).collect(Collectors.toList()))
                 .build();
     }
 }

@@ -5,7 +5,9 @@ import org.greentech.backend.entity.Parameter;
 import org.greentech.backend.entity.Product;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -21,6 +23,7 @@ public class ProductResponseDto {
     private BigDecimal price;
     private String description;
     private Map<ParameterResponseDto, String> characteristics = new HashMap<>();
+    private List<ImageResponseDto> images = new ArrayList<>();
 
     public static ProductResponseDto fromEntity(Product entity) {
         // Преобразуем Map<Parameter, String> в Map<ParameterResponseDto, String>
@@ -39,6 +42,7 @@ public class ProductResponseDto {
                 .withPrice(entity.getPrice())
                 .withDescription(entity.getDescription())
                 .withCharacteristics(mappedCharacteristics)
+                .withImages(entity.getImages().stream().map(ImageResponseDto::fromEntity).toList())
                 .build();
     }
 }

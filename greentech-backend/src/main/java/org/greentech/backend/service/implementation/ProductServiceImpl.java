@@ -76,6 +76,7 @@ public class ProductServiceImpl implements ProductService {
         productToUpdate.setName(patch.getName());
         productToUpdate.setPrice(patch.getPrice());
         productToUpdate.setDescription(patch.getDescription());
+        productToUpdate.setImages(patch.getImages());
 
         return ProductResponseDto.fromEntity(
                 productRepository.save(productToUpdate));
