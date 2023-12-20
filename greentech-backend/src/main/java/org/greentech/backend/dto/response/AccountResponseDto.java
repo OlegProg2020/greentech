@@ -4,6 +4,8 @@ import lombok.*;
 import org.greentech.backend.entity.Account;
 import org.greentech.backend.entity.enums.Role;
 
+import java.util.List;
+
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -15,6 +17,7 @@ public class AccountResponseDto {
     private String phone;
     private Role role;
     private String name;
+    private CartResponseDto cart;
 
     public static AccountResponseDto fromEntity(Account entity) {
         return AccountResponseDto.builder()
@@ -22,6 +25,7 @@ public class AccountResponseDto {
                 .withPhone(entity.getPhone())
                 .withRole(entity.getRole())
                 .withName(entity.getName())
+                .withCart(CartResponseDto.fromEntity(entity.getCart()))
                 .build();
     }
 }

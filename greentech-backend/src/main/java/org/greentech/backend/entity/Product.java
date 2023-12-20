@@ -39,6 +39,8 @@ public class Product implements Serializable {
     @ToString.Exclude
     Map<Parameter, String> characteristics = new HashMap<>();
 
+    @Builder.Default
+    @ToString.Exclude
     @OneToMany(cascade=CascadeType.ALL)
     List<Image> images = new ArrayList<>();
 
