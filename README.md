@@ -8,7 +8,7 @@
 
 #### 3) В командной строке введите:
 ```
-docker-compose up -d
+docker-compose -p greentech-backend up -d
 ```
 Приложение начнет работать по адресу http://localhost:8080
 
