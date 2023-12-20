@@ -6,9 +6,7 @@ import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Getter
@@ -40,6 +38,9 @@ public class Product implements Serializable {
     @Builder.Default
     @ToString.Exclude
     Map<Parameter, String> characteristics = new HashMap<>();
+
+    @OneToMany(cascade=CascadeType.ALL)
+    List<Image> images = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
