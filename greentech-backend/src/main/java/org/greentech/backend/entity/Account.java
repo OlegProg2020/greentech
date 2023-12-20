@@ -34,7 +34,7 @@ public class Account implements Serializable {
 
     private String name;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Cart cart;
 
     @Override
