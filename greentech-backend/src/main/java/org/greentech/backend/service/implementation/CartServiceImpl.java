@@ -4,10 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.greentech.backend.data.repository.CartRepository;
 import org.greentech.backend.data.repository.ProductRepository;
 import org.greentech.backend.dto.response.CartResponseDto;
+import org.greentech.backend.entity.Account;
 import org.greentech.backend.entity.Cart;
 import org.greentech.backend.entity.Product;
 import org.greentech.backend.exception.DataMissingException;
 import org.greentech.backend.service.CartService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -22,8 +24,8 @@ public class CartServiceImpl implements CartService {
 
     @Override
     @Transactional
-    public CartResponseDto addProduct(Integer cartId, Integer productId) {
-        Cart cart = findCartByIdInternal(cartId);
+    public CartResponseDto addProductToCart(Integer productId) {
+        Cart cart = getCurrentUserCart();
         Product product = findProductByIdInternal(productId);
 
         cart.getProducts().add(product);
@@ -33,8 +35,8 @@ public class CartServiceImpl implements CartService {
 
     @Override
     @Transactional
-    public CartResponseDto removeProduct(Integer cartId, Integer productId) {
-        Cart cart = findCartByIdInternal(cartId);
+    public CartResponseDto removeProductFromCart(Integer productId) {
+        Cart cart = getCurrentUserCart();
         Product product = findProductByIdInternal(productId);
 
         cart.getProducts().remove(product);
@@ -42,13 +44,14 @@ public class CartServiceImpl implements CartService {
         return CartResponseDto.fromEntity(cartRepository.save(cart));
     }
 
-    private Cart findCartByIdInternal(Integer cartId) {
-        return cartRepository.findById(cartId)
-                .orElseThrow(() -> new DataMissingException("Корзина не найдена"));
-    }
 
     private Product findProductByIdInternal(Integer productId) {
         return productRepository.findById(productId)
                 .orElseThrow(() -> new DataMissingException("Продукт не найден"));
+    }
+
+    private Cart getCurrentUserCart() {
+        Account currentUser = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return currentUser.getCart();
     }
 }

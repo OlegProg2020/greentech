@@ -9,22 +9,20 @@ import org.springframework.web.bind.annotation.*;
 
 @SecurityRequirement(name = "Bearer Authentication")
 @RestController
-@RequestMapping(path = "/carts/{cartId}/products/{productId}")
+@RequestMapping(path = "/cart/products/{productId}")
 @RequiredArgsConstructor
 public class CartController {
     private final CartService cartService;
 
     @PostMapping
-    public ResponseEntity<CartResponseDto> addProductToCart(@PathVariable(name = "cartId") Integer cartId,
-                                                            @PathVariable(name = "productId") Integer productId) {
+    public ResponseEntity<CartResponseDto> addProductToCart(@PathVariable(name = "productId") Integer productId) {
         return ResponseEntity
-                .ok(cartService.addProduct(cartId, productId));
+                .ok(cartService.addProductToCart(productId));
     }
 
     @DeleteMapping
-    public ResponseEntity<CartResponseDto> removeProductFromCart(@PathVariable(name = "cartId") Integer cartId,
-                                                                 @PathVariable(name = "productId") Integer productId) {
+    public ResponseEntity<CartResponseDto> removeProductFromCart(@PathVariable(name = "productId") Integer productId) {
         return ResponseEntity
-                .ok(cartService.removeProduct(cartId, productId));
+                .ok(cartService.removeProductFromCart(productId));
     }
 }
