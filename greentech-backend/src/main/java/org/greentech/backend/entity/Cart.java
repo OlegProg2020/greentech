@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,22 +16,24 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(setterPrefix = "with")
-public class Image implements Serializable {
+public class Cart implements Serializable {
     @Serial
-    private static final long serialVersionUID = 6949095286706575292L;
+    private static final long serialVersionUID = 1154884060127811538L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String uri;
+    @OneToMany
+    @ToString.Exclude
+    private List<Product> products = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Image image)) return false;
+        if (!(o instanceof Cart cart)) return false;
 
-        return Objects.equals(id, image.id);
+        return Objects.equals(id, cart.id);
     }
 
     @Override
