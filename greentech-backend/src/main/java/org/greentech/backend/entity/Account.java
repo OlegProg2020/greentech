@@ -34,6 +34,9 @@ public class Account implements Serializable {
 
     private String name;
 
+    @OneToOne
+    private Cart cart;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
