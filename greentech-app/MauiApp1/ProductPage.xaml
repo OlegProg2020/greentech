@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MauiApp1"
+             BackgroundColor="#fafafa"
+             x:Class="MauiApp1.ProductPage">
+    <VerticalStackLayout>
+        <Button HorizontalOptions="Center" VerticalOptions="Start" BackgroundColor="#fafafa" ImageSource="strelka2.png" x:Name="back_but" Clicked="back_but_Clicked" Scale="1.2" Padding="20"/>
+        <VerticalStackLayout Padding="15,15,15,15" BackgroundColor="white"  HeightRequest="500" WidthRequest="400">
+            <Image Source="{Binding images[0].uri}" Aspect="AspectFit" HeightRequest="250" BackgroundColor="#ededed"/>
+            <Label FontSize="34" Text="{Binding name}" HorizontalOptions="Center"/>
+            <Label Text="{Binding price, StringFormat=\{0\} ₽}" FontFamily ="Inter" FontAttributes="Bold" FontSize="26" TextColor="#59c349" HorizontalOptions="Center"/>
+            <Label FontSize="20" Text="{Binding description}" HorizontalOptions="Center"/>
+            <Button Text="Добавить в корзину" BackgroundColor="#59c349" FontSize="20" TextColor="#b2ff92" FontFamily ="Inter" HorizontalOptions="Center" CornerRadius="10" WidthRequest="250" Margin="0, 10, 0, 0" Clicked="Buy_butt"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

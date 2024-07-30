@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MauiApp1"
+             BackgroundColor="#fafafa"
+             x:Class="MauiApp1.GeneralPage">
+    <VerticalStackLayout>
+        <Label HorizontalOptions="Center" Text="ГОРШКИ" FontSize="44" FontFamily ="Comfortaa" TextColor="#6e4845" FontAttributes="Bold" Padding="20"/>
+        <Grid>
+            <ScrollView Grid.Row="1" Padding="0,0,0,50" HeightRequest="700">
+            <CollectionView x:Name="collView" ItemsLayout="VerticalGrid, 2" >
+                    <CollectionView.ItemTemplate Padding ="20">
+                        <DataTemplate x:DataType="model:Product" >
+                        <VerticalStackLayout Padding="15" BackgroundColor="white"  HeightRequest="300" WidthRequest="200">
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding id}"/>
+                            </VerticalStackLayout.GestureRecognizers>
+                            <Image Source="pot1.png" Aspect="AspectFit" HeightRequest="150" BackgroundColor="#ededed"/>
+                                <Label Text="{Binding price, StringFormat=\{0\} ₽}" FontFamily ="Inter" FontAttributes="Bold" FontSize="20" TextColor="#59c349" HorizontalOptions="Center"/>
+                                <Label FontSize="16" Text="{Binding name}" HorizontalOptions="Center"/>
+                                <Button Text="Купить" BackgroundColor="#59c349" TextColor="#b2ff92" HorizontalOptions="Center" FontSize="20" CornerRadius="10" WidthRequest="180" Margin="0, 10, 0, 0" Clicked="Buy_butt"/>
+                            </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+    </VerticalStackLayout>
+</ContentPage>
