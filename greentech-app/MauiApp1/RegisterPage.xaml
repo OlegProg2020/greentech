@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.RegisterPage"
+             BackgroundColor="#fafafa"
+             Title="RegisterPage">
+    <ScrollView>
+        <VerticalStackLayout
+        Spacing="10"
+        Padding="25"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Image Source = "Resources/AppIcon/GrinTekh_Logo.png" Scale ="0.7" Aspect="AspectFit"  Grid.Column="1" />
+            </Grid>
+            <VerticalStackLayout> 
+                <Label Text="Зарегистрируйтесь" FontFamily = "Inter" FontSize="28" TextColor = "#6e4845" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame HeightRequest="45" Padding="0" HasShadow="True"  HorizontalOptions="FillAndExpand" BorderColor="#c2c2c2">
+                    <Entry x:Name="name" FontFamily = "Comfortaa" Margin="10,0,0,0" VerticalOptions="Center" Placeholder="Имя" Keyboard="Email"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame HeightRequest="45" Padding="0" HasShadow="True"  HorizontalOptions="FillAndExpand" BorderColor="#c2c2c2">
+                    <Entry x:Name="phone" FontFamily = "Comfortaa" Margin="10,0,0,0" VerticalOptions="Center" Placeholder="Номер телефона" Keyboard="Email"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame HeightRequest="45" Padding="0" HasShadow="True"  HorizontalOptions="FillAndExpand" BorderColor="#c2c2c2">
+                    <Entry x:Name="password" FontFamily = "Comfortaa"  Margin="10,0,0,0" VerticalOptions="Center" Placeholder="Пароль" IsPassword="True" Keyboard="Email"/>
+                </Frame>
+            </StackLayout>
+
+            <VerticalStackLayout Spacing ="0" Margin="0,20,0,0">
+                <Button Text="Регистрация" FontFamily = "Inter"  FontSize="22" BackgroundColor="#59c349" TextColor = "#b2ff92" HorizontalOptions="Center" CornerRadius="10" WidthRequest="350"  Clicked="Button_Clicked"/>
+                <Button HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#fafafa" ImageSource="strelka.png" x:Name="back_but" Clicked="back_but_Clicked" Scale="0.15"/>
+            </VerticalStackLayout>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,71 @@
+is_global = true
+build_property.TargetFramework = net7.0-ios
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MauiApp1
+build_property.ProjectDir = C:\Users\Andrew\Desktop\Inst\Proj is\MauiApp1\MauiApp1\
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/Account.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Account.xaml
+build_metadata.AdditionalFiles.TargetPath = Account.xaml
+build_metadata.AdditionalFiles.RelativePath = Account.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/Cart.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Cart.xaml
+build_metadata.AdditionalFiles.TargetPath = Cart.xaml
+build_metadata.AdditionalFiles.RelativePath = Cart.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/GeneralPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.GeneralPage.xaml
+build_metadata.AdditionalFiles.TargetPath = GeneralPage.xaml
+build_metadata.AdditionalFiles.RelativePath = GeneralPage.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/ProductPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.ProductPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ProductPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ProductPage.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/RegisterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.RegisterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = RegisterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = RegisterPage.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/Andrew/Desktop/Inst/Proj is/MauiApp1/MauiApp1/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    TabBarBackgroundColor ="#59c349"
+    TabBarTitleColor ="#b2ff92"
+    TabBarUnselectedColor ="#008700"
+    x:Class="MauiApp1.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Navigated="Shell_Navigated"
+    xmlns:local="clr-namespace:MauiApp1">
+    <TabBar x:Name="TabBar" >
+        <Tab Title ="Главная" Icon="glavnaya.png">
+            <ShellContent ContentTemplate="{DataTemplate local:GeneralPage}" Route="GeneralPage" />
+        </Tab>
+        <Tab Title ="Корзина" Icon="korzina.png" >
+            <ShellContent ContentTemplate="{DataTemplate local:Cart}" Route="Cart"/>
+        </Tab>
+        <Tab  Title ="Профиль" Icon="profil.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"/>
+        </Tab>
+    </TabBar>
+</Shell>
